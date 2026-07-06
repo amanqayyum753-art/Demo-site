@@ -161,7 +161,7 @@ export const SITE_CONFIG = {
       "RR 620 Corridor",
     ],
     mapSrc:
-      "https://www.google.com/maps/search/?api=1&query=A%20Model%20Plumbing&query_place_id=ChIJe__U8iVNW4YRclO2drKKHpE",
+      "https://www.google.com/maps?q=A+Model+Plumbing&output=embed",
   },
 
   // ─── FAQ ─────────────────────────────────────────────────────────────────────
