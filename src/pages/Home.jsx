@@ -29,7 +29,7 @@ function Nav() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0A2540]/96 backdrop-blur-md shadow-xl"
+          ? "bg-[#0A2540]/94 backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.35)]"
           : "bg-[#0A2540]"
       }`}
     >
@@ -43,11 +43,11 @@ function Nav() {
             A
           </div>
           <div>
-            <div className="font-display font-bold text-lg leading-tight text-white">
+            <div className="font-display font-bold text-lg leading-tight text-white tracking-[0.02em]">
               A MODEL PLUMBING
             </div>
             <div
-              className="text-[10px] tracking-[0.14em] uppercase font-mono"
+              className="text-[10px] tracking-[0.18em] uppercase font-mono"
               style={{ color: "#7FB9DE" }}
             >
               Est. 2001 · Lic #M-31665
@@ -56,12 +56,12 @@ function Nav() {
         </a>
 
         {/* Desktop nav links */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden md:flex items-center gap-8">
           {SITE_CONFIG.nav.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="text-white/80 hover:text-white text-sm font-medium tracking-wide transition-colors no-underline"
+              className="text-white/80 hover:text-white text-sm font-medium tracking-[0.08em] uppercase transition-colors no-underline"
             >
               {item.label}
             </a>
@@ -78,10 +78,11 @@ function Nav() {
           </a>
           <a
             href="#contact"
-            className="text-white text-xs tracking-[0.1em] uppercase font-body font-medium px-5 py-2.5 transition-colors no-underline"
-            style={{ background: "#C97D3B" }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "#a86529")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "#C97D3B")}
+            className="text-white text-xs tracking-[0.13em] uppercase font-body font-semibold px-5 py-2.5 transition-all no-underline rounded-sm"
+            style={{
+              background: "linear-gradient(135deg, #C97D3B 0%, #B56B30 100%)",
+              boxShadow: "0 10px 25px rgba(201,125,59,0.35)",
+            }}
           >
             Free Quote
           </a>
@@ -245,7 +246,7 @@ function Pricing() {
   );
 }
 
-// ─── Service Area ─────────────────────────────────────────────────────────────
+// ─── Service Area ────────────────────────────────────────────────────────────
 function ServiceArea() {
   return (
     <section className="py-24 md:py-32" style={{ background: "#F7F7F7" }}>
@@ -372,11 +373,11 @@ function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const fd = new FormData(e.target);
-    const name  = fd.get("fname")  || "";
+    const name = fd.get("fname") || "";
     const phone = fd.get("fphone") || "";
-    const addr  = fd.get("faddr")  || "";
-    const msg   = fd.get("fmsg")   || "";
-    const body  = `Name: ${name}%0APhone: ${phone}%0AAddress: ${addr}%0A%0A${encodeURIComponent(msg)}`;
+    const addr = fd.get("faddr") || "";
+    const msg = fd.get("fmsg") || "";
+    const body = `Name: ${name}%0APhone: ${phone}%0AAddress: ${addr}%0A%0A${encodeURIComponent(msg)}`;
     window.location.href = `mailto:${SITE_CONFIG.contact.mailtoEmail}?subject=${encodeURIComponent(
       SITE_CONFIG.contact.mailtoSubject
     )}&body=${body}`;
@@ -625,14 +626,14 @@ function Footer() {
 // ─── Page ────────────────────────────────────────────────────────────────────
 export default function Home() {
   const { scrollYProgress } = useScroll();
-  const heroY       = useTransform(scrollYProgress, [0, 0.3], [0, -80]);
+  const heroY = useTransform(scrollYProgress, [0, 0.3], [0, -80]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
 
   return (
     <div className="overflow-hidden" id="top">
       <Nav />
 
-      {/* ── Hero ──────────────────────────────────────────────────────────── */}
+      {/* ── Hero ───────────────────────────────────────────────────────────── */}
       <section
         className="relative min-h-screen flex items-center justify-center px-6 md:px-12"
         style={{ paddingTop: "80px" }}
@@ -641,41 +642,51 @@ export default function Home() {
         <motion.div className="absolute inset-0 z-0" style={{ y: heroY }}>
           <div
             className="absolute inset-0 z-10"
-            style={{ background: "rgba(10,37,64,0.72)" }}
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(8,26,44,0.70) 0%, rgba(10,37,64,0.88) 58%, rgba(8,26,44,0.95) 100%)",
+            }}
+          />
+          <div
+            className="absolute inset-0 z-10"
+            style={{
+              background:
+                "radial-gradient(circle at 50% 22%, rgba(201,125,59,0.22) 0%, rgba(201,125,59,0) 52%)",
+            }}
           />
           <img
             src={HERO_IMG}
             alt="Professional plumbing service in Dripping Springs TX"
             className="w-full h-full object-cover"
-            style={{ opacity: 0.5 }}
+            style={{ opacity: 0.42, filter: "saturate(0.92) contrast(1.05)" }}
           />
         </motion.div>
 
         <motion.div
-          className="relative z-20 text-center max-w-5xl mx-auto"
+          className="relative z-20 text-center max-w-6xl mx-auto"
           style={{ opacity: heroOpacity }}
         >
           {/* Eyebrow */}
           <FadeIn delay={0.2}>
             <p
-              className="text-xs tracking-[0.35em] uppercase mb-8 font-mono flex items-center justify-center gap-3"
-              style={{ color: "#7FB9DE" }}
+              className="text-sm md:text-base tracking-[0.42em] uppercase mb-10 font-mono flex items-center justify-center gap-4"
+              style={{ color: "#A8D2EC" }}
             >
               <span
                 className="inline-block"
-                style={{ width: 26, height: 2, background: "#C97D3B" }}
+                style={{ width: 40, height: 2, background: "#C97D3B" }}
               />
               {SITE_CONFIG.tagline}
             </p>
           </FadeIn>
 
-          {/* Headline — three lines, third line in copper */}
-          <h1 className="font-display text-5xl sm:text-7xl md:text-8xl tracking-tight leading-[0.95] text-white">
+          {/* Headline — bigger + premium */}
+          <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[7.4rem] tracking-tight leading-[0.9] text-white drop-shadow-[0_8px_26px_rgba(0,0,0,0.35)]">
             {SITE_CONFIG.heroHeadline.split("\n").map((line, i) => (
               <span
                 key={i}
                 className="block"
-                style={i === 2 ? { color: "#C97D3B" } : undefined}
+                style={i === 2 ? { color: "#D89A5E" } : undefined}
               >
                 <RevealText delay={0.3 + i * 0.15} splitWords>
                   {line}
@@ -687,8 +698,8 @@ export default function Home() {
           {/* Sub-headline */}
           <FadeIn delay={0.8}>
             <p
-              className="mt-8 text-lg md:text-xl max-w-xl mx-auto leading-relaxed font-body font-light"
-              style={{ color: "rgba(255,255,255,0.78)" }}
+              className="mt-10 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-body font-light"
+              style={{ color: "rgba(255,255,255,0.87)" }}
             >
               {SITE_CONFIG.heroSubheadline}
             </p>
@@ -696,33 +707,25 @@ export default function Home() {
 
           {/* CTAs */}
           <FadeIn delay={1}>
-            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-5">
               <a
                 href={SITE_CONFIG.phoneHref}
-                className="inline-flex items-center gap-2 text-white text-sm tracking-[0.1em] uppercase font-body font-medium px-8 py-4 transition-colors no-underline"
-                style={{ background: "#C97D3B" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.background = "#a86529")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.background = "#C97D3B")
-                }
+                className="inline-flex items-center gap-2.5 text-white text-sm tracking-[0.14em] uppercase font-body font-semibold px-10 py-4.5 transition-all no-underline rounded-sm"
+                style={{
+                  background: "linear-gradient(135deg, #C97D3B 0%, #B5672B 100%)",
+                  boxShadow: "0 14px 34px rgba(201,125,59,0.38)",
+                }}
               >
                 <Phone className="w-4 h-4" />
                 Call {SITE_CONFIG.phone}
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 text-white text-sm tracking-[0.1em] uppercase font-body font-medium px-8 py-4 transition-colors no-underline"
-                style={{ border: "1.5px solid rgba(255,255,255,0.3)" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.borderColor =
-                    "rgba(255,255,255,0.75)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.borderColor =
-                    "rgba(255,255,255,0.3)")
-                }
+                className="inline-flex items-center gap-2.5 text-white text-sm tracking-[0.14em] uppercase font-body font-semibold px-10 py-4.5 transition-all no-underline rounded-sm"
+                style={{
+                  border: "1.5px solid rgba(255,255,255,0.5)",
+                  background: "rgba(255,255,255,0.02)",
+                }}
               >
                 Get a Free Quote
               </a>
@@ -731,14 +734,15 @@ export default function Home() {
 
           {/* Trust badges */}
           <FadeIn delay={1.15}>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               {SITE_CONFIG.heroBadges.map((badge) => (
                 <span
                   key={badge}
-                  className="text-xs tracking-[0.06em] px-3 py-1.5 font-mono"
+                  className="text-xs md:text-sm tracking-[0.09em] px-4 py-2 font-mono rounded-sm"
                   style={{
-                    border: "1px solid rgba(255,255,255,0.22)",
-                    color: "rgba(255,255,255,0.8)",
+                    border: "1px solid rgba(255,255,255,0.26)",
+                    color: "rgba(255,255,255,0.88)",
+                    background: "rgba(255,255,255,0.04)",
                   }}
                 >
                   {badge}
@@ -775,7 +779,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ── Trust Strip ──────────────────────────────────────────────────────── */}
+      {/* ── Trust Strip ─────────────────────────────────────────────────────── */}
       <div
         style={{
           background: "#081A2C",
@@ -804,7 +808,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ── Stats ────────────────────────────────────────────────────────────── */}
+      {/* ── Stats ───────────────────────────────────────────────────────────── */}
       <section className="py-24 md:py-32" style={{ background: "#F7F7F7" }}>
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
@@ -827,7 +831,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── About ─────────────────────────────────────────────────────────────── */}
+      {/* ── About ───────────────────────────────────────────────────────────── */}
       <section id="about" className="py-24 md:py-40">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -895,29 +899,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Services ─────────────────────────────────────────────────────────── */}
+      {/* ── Services ────────────────────────────────────────────────────────── */}
       <div id="services">
         <HomeServices />
       </div>
 
-      {/* ── Pricing ──────────────────────────────────────────────────────────── */}
+      {/* ── Pricing ─────────────────────────────────────────────────────────── */}
       <Pricing />
 
-      {/* ── Testimonials ─────────────────────────────────────────────────────── */}
+      {/* ── Testimonials ────────────────────────────────────────────────────── */}
       <div id="reviews">
         <HomeTestimonials />
       </div>
 
-      {/* ── Service Area ─────────────────────────────────────────────────────── */}
+      {/* ── Service Area ────────────────────────────────────────────────────── */}
       <ServiceArea />
 
-      {/* ── FAQ ──────────────────────────────────────────────────────────────── */}
+      {/* ── FAQ ─────────────────────────────────────────────────────────────── */}
       <FAQ />
 
-      {/* ── Contact ──────────────────────────────────────────────────────────── */}
+      {/* ── Contact ─────────────────────────────────────────────────────────── */}
       <Contact />
 
-      {/* ── Footer ───────────────────────────────────────────────────────────── */}
+      {/* ── Footer ──────────────────────────────────────────────────────────── */}
       <Footer />
     </div>
   );
