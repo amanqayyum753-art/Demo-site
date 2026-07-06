@@ -61,7 +61,7 @@ export const SITE_CONFIG = {
   about: {
     headline: "A Family Trade\nNot a Franchise",
     description:
-      "Danny Lee Terry has been repairing and installing plumbing systems around the Austin area since 2001, journeyman-licensed in three states and carrying Texas Master Plumber license #M-31665. What started as one truck is now a small, close-knit crew — still small enough that when you call, you get an owner who answers, not a call-center script.",
+      "Danny Lee Terry has been repairing and installing plumbing systems around the Austin area since 2001, journeyman-licensed in three states and carrying Texas Master Plumber license #M-31665. Work is done with his team, not subcontracted call-center crews.",
     features: [
       "Licensed & insured, TSBPE #M-31665",
       "Free consultation before any work begins",
@@ -161,7 +161,7 @@ export const SITE_CONFIG = {
       "RR 620 Corridor",
     ],
     mapSrc:
-      "https://www.google.com/maps?q=Dripping+Springs,+TX+78620&z=11&output=embed",
+      "https://www.google.com/maps/search/?api=1&query=A%20Model%20Plumbing&query_place_id=ChIJe__U8iVNW4YRclO2drKKHpE",
   },
 
   // ─── FAQ ─────────────────────────────────────────────────────────────────────
