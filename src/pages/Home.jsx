@@ -634,8 +634,8 @@ export default function Home() {
 
       {/* ── Hero ───────────────────────────────────────────────────────────── */}
       <section
-        className="relative min-h-screen flex items-center justify-center px-6 md:px-12"
-        style={{ paddingTop: "80px" }}
+        className="relative min-h-screen flex items-start justify-start px-6 md:px-12"
+        style={{ paddingTop: "120px" }}
       >
         {/* Parallax background */}
         <motion.div className="absolute inset-0 z-0" style={{ y: heroY }}>
@@ -652,13 +652,13 @@ export default function Home() {
         </motion.div>
 
         <motion.div
-          className="relative z-20 text-center max-w-5xl mx-auto"
+          className="relative z-20 w-full max-w-6xl mx-auto text-left"
           style={{ opacity: heroOpacity }}
         >
           {/* Eyebrow */}
           <FadeIn delay={0.2}>
             <p
-              className="text-xs tracking-[0.35em] uppercase mb-8 font-mono flex items-center justify-center gap-3"
+              className="text-xs tracking-[0.35em] uppercase mb-6 font-mono flex items-center justify-start gap-3"
               style={{ color: "#7FB9DE" }}
             >
               <span
@@ -670,7 +670,7 @@ export default function Home() {
           </FadeIn>
 
           {/* Headline — three lines, third line in copper */}
-          <h1 className="font-display text-5xl sm:text-7xl md:text-8xl tracking-tight leading-[0.95] text-white">
+          <h1 className="font-display text-5xl sm:text-7xl md:text-8xl tracking-tight leading-[0.95] text-white max-w-4xl">
             {SITE_CONFIG.heroHeadline.split("\n").map((line, i) => (
               <span
                 key={i}
@@ -687,8 +687,8 @@ export default function Home() {
           {/* Sub-headline */}
           <FadeIn delay={0.8}>
             <p
-              className="mt-8 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-body font-medium"
-              style={{ color: "rgba(255,255,255,0.9)" }}
+              className="mt-8 text-2xl md:text-3xl lg:text-[2rem] max-w-4xl leading-[1.45] font-display font-medium tracking-[0.01em]"
+              style={{ color: "rgba(255,255,255,0.94)" }}
             >
               Round-the-clock plumbing repair and installation for Dripping Springs, South Austin, Wimberley &amp; the Hill Country — real quotes, a real warranty, and a real person who shows up.
             </p>
@@ -696,7 +696,7 @@ export default function Home() {
 
           {/* CTAs */}
           <FadeIn delay={1}>
-            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row items-start justify-start gap-4">
               <a
                 href={SITE_CONFIG.phoneHref}
                 className="inline-flex items-center gap-2 text-white text-sm tracking-[0.1em] uppercase font-body font-medium px-8 py-4 transition-colors no-underline"
@@ -731,7 +731,7 @@ export default function Home() {
 
           {/* Trust badges */}
           <FadeIn delay={1.15}>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center justify-start gap-3">
               {SITE_CONFIG.heroBadges.map((badge) => (
                 <span
                   key={badge}
